@@ -259,7 +259,7 @@ export default function Home() {
               <p className="text-gray-300 text-lg">Fill out the form below to claim your two free weeks of unlimited training. No commitment required.</p>
             </div>
 
-            <form className="space-y-6">
+            <form action="https://formspree.io/f/mbdznork" method="POST" className="space-y-6">>
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-sm font-bold uppercase tracking-wider text-gray-400">Student Name</label>
@@ -267,29 +267,29 @@ export default function Home() {
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-bold uppercase tracking-wider text-gray-400">Student Age</label>
-                  <input type="number" className="w-full bg-black border border-zinc-800 p-4 text-white focus:border-red-500 focus:ring-1 focus:ring-red-500 outline-none transition-colors" placeholder="e.g. 10" />
+                  <input name="student_age" type="number" className="w-full bg-black border border-zinc-800 p-4 text-white focus:border-red-500 focus:ring-1 focus:ring-red-500 outline-none transition-colors" placeholder="e.g. 10" />
                 </div>
               </div>
               
               <div className="space-y-2">
                 <label className="text-sm font-bold uppercase tracking-wider text-gray-400">Parent / Guardian Name (If under 18)</label>
-                <input type="text" className="w-full bg-black border border-zinc-800 p-4 text-white focus:border-red-500 focus:ring-1 focus:ring-red-500 outline-none transition-colors" placeholder="Jane Doe" />
+                <input name="student_name" name="parent_name" type="text" className="w-full bg-black border border-zinc-800 p-4 text-white focus:border-red-500 focus:ring-1 focus:ring-red-500 outline-none transition-colors" placeholder="Jane Doe" />
               </div>
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-sm font-bold uppercase tracking-wider text-gray-400">Email Address</label>
-                  <input type="email" className="w-full bg-black border border-zinc-800 p-4 text-white focus:border-red-500 focus:ring-1 focus:ring-red-500 outline-none transition-colors" placeholder="jane@example.com" />
+                  <input name="email" type="email" className="w-full bg-black border border-zinc-800 p-4 text-white focus:border-red-500 focus:ring-1 focus:ring-red-500 outline-none transition-colors" placeholder="jane@example.com" />
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-bold uppercase tracking-wider text-gray-400">Phone Number</label>
-                  <input type="tel" className="w-full bg-black border border-zinc-800 p-4 text-white focus:border-red-500 focus:ring-1 focus:ring-red-500 outline-none transition-colors" placeholder="(555) 123-4567" />
+                  <input name="phone" name="phone" type="tel" className="w-full bg-black border border-zinc-800 p-4 text-white focus:border-red-500 focus:ring-1 focus:ring-red-500 outline-none transition-colors" placeholder="(555) 123-4567" />
                 </div>
               </div>
 
               <div className="space-y-2">
                 <label className="text-sm font-bold uppercase tracking-wider text-gray-400">Preferred Program</label>
-                <select className="w-full bg-black border border-zinc-800 p-4 text-white focus:border-red-500 focus:ring-1 focus:ring-red-500 outline-none transition-colors appearance-none">
+                <select name="program" className="w-full bg-black border border-zinc-800 p-4 text-white focus:border-red-500 focus:ring-1 focus:ring-red-500 outline-none transition-colors appearance-none">
                   <option>Select a program...</option>
                   <option>Little Ninjas (Ages 4-7)</option>
                   <option>Junior Elite (Ages 8-12)</option>
