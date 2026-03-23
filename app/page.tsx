@@ -298,7 +298,7 @@ export default function Home() {
                 </select>
               </div>
 
-              <button type="button" className="w-full py-5 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-display text-3xl tracking-wider transform -skew-x-6 hover:scale-[1.02] transition-all shadow-[0_0_30px_rgba(220,38,38,0.3)]">
+              <button type="submit" className="w-full py-5 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-display text-3xl tracking-wider transform -skew-x-6 hover:scale-[1.02] transition-all shadow-[0_0_30px_rgba(220,38,38,0.3)]">
                 <span className="transform skew-x-6 block">CLAIM MY 2 FREE WEEKS</span>
               </button>
               <p className="text-center text-xs text-gray-500 mt-4">By submitting this form, you agree to our terms and conditions. We respect your privacy.</p>
