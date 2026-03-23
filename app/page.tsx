@@ -273,7 +273,7 @@ export default function Home() {
               
               <div className="space-y-2">
                 <label className="text-sm font-bold uppercase tracking-wider text-gray-400">Parent / Guardian Name (If under 18)</label>
-                <input name="student_name" name="parent_name" type="text" className="w-full bg-black border border-zinc-800 p-4 text-white focus:border-red-500 focus:ring-1 focus:ring-red-500 outline-none transition-colors" placeholder="Jane Doe" />
+                <input name="parent_name" type="text" className="w-full bg-black border border-zinc-800 p-4 text-white focus:border-red-500 focus:ring-1 focus:ring-red-500 outline-none transition-colors" placeholder="Jane Doe" />
               </div>
 
               <div className="grid md:grid-cols-2 gap-6">
@@ -283,7 +283,7 @@ export default function Home() {
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-bold uppercase tracking-wider text-gray-400">Phone Number</label>
-                  <input name="phone" name="phone" type="tel" className="w-full bg-black border border-zinc-800 p-4 text-white focus:border-red-500 focus:ring-1 focus:ring-red-500 outline-none transition-colors" placeholder="(555) 123-4567" />
+                  <input name="phone" type="tel" className="w-full bg-black border border-zinc-800 p-4 text-white focus:border-red-500 focus:ring-1 focus:ring-red-500 outline-none transition-colors" placeholder="(555) 123-4567" />
                 </div>
               </div>
 
