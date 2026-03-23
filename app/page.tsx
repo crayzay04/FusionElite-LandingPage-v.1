@@ -13,14 +13,14 @@ export default function Home() {
           <div className="flex items-center gap-3">
             <div className="relative w-12 h-16">
               <Image 
-                src="https://placehold.co/100x120/ffd700/ff0000?text=ELITE" 
+                src="/logo.svg" 
                 alt="Elite Logo" 
                 fill
                 className="object-contain"
                 unoptimized
               />
             </div>
-            <span className="font-display text-3xl tracking-wider">FUSION</span>
+            <span className="font-display text-3xl tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-yellow-500 transform -skew-x-6">FUSION ELITE</span>
           </div>
           <nav className="hidden md:flex gap-8 font-bold text-sm uppercase tracking-wider">
             <a href="#about" className="hover:text-red-500 transition-colors">About</a>
@@ -315,14 +315,14 @@ export default function Home() {
               <div className="flex items-center gap-3 mb-6">
                 <div className="relative w-10 h-14">
                   <Image 
-                    src="https://placehold.co/100x120/ffd700/ff0000?text=ELITE" 
+                    src="/logo.svg" 
                     alt="Elite Logo" 
                     fill
                     className="object-contain"
                     unoptimized
                   />
                 </div>
-                <span className="font-display text-2xl tracking-wider">FUSION</span>
+                <span className="font-display text-2xl tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-yellow-500 transform -skew-x-6">FUSION ELITE</span>
               </div>
               <p className="text-gray-400 max-w-sm mb-6">Empowering the next generation through the discipline, respect, and physical fitness of martial arts.</p>
               <div className="flex gap-4">
