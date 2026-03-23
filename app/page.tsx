@@ -259,7 +259,7 @@ export default function Home() {
               <p className="text-gray-300 text-lg">Fill out the form below to claim your two free weeks of unlimited training. No commitment required.</p>
             </div>
 
-            <form action="https://formspree.io/f/mbdznork" method="POST" className="space-y-6">>
+            <form action="https://formspree.io/f/mbdznork" method="POST" className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-sm font-bold uppercase tracking-wider text-gray-400">Student Name</label>
