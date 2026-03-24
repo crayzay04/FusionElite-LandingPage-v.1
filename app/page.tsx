@@ -108,8 +108,8 @@ export default function Home() {
               </p>
               <div className="grid grid-cols-2 gap-6">
                 <div className="border-l-2 border-red-500 pl-4">
-                  <div className="font-display text-4xl text-white">500+</div>
-                  <div className="text-sm text-gray-400 uppercase tracking-wider font-bold">Active Students</div>
+                  <div className="font-display text-4xl text-white">5000+</div>
+                  <div className="text-sm text-gray-400 uppercase tracking-wider font-bold">Students Taught</div>
                 </div>
                 <div className="border-l-2 border-yellow-500 pl-4">
                   <div className="font-display text-4xl text-white">30+</div>
