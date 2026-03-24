@@ -188,19 +188,19 @@ export default function Home() {
               <div className="space-y-6">
                 <div className="bg-black p-6 border-l-4 border-yellow-500 transform -skew-x-3">
                   <div className="transform skew-x-3">
-                    <h3 className="font-display text-2xl mb-2">Little Ninjas (Ages 4-7)</h3>
+                    <h3 className="font-display text-2xl mb-2">Lil Dragons (Ages 4-7)</h3>
                     <p className="text-gray-400">Focuses on listening skills, coordination, and basic motor skills in a fun, game-based environment.</p>
                   </div>
                 </div>
                 <div className="bg-black p-6 border-l-4 border-red-500 transform -skew-x-3">
                   <div className="transform skew-x-3">
-                    <h3 className="font-display text-2xl mb-2">Junior Elite (Ages 8-12)</h3>
+                    <h3 className="font-display text-2xl mb-2">Junior Elite (Ages 8-14)</h3>
                     <p className="text-gray-400">Builds confidence, anti-bullying strategies, and solid martial arts fundamentals.</p>
                   </div>
                 </div>
                 <div className="bg-black p-6 border-l-4 border-orange-500 transform -skew-x-3">
                   <div className="transform skew-x-3">
-                    <h3 className="font-display text-2xl mb-2">Teens & Adults (13+)</h3>
+                    <h3 className="font-display text-2xl mb-2">Teens & Adults (14+)</h3>
                     <p className="text-gray-400">High-intensity training focusing on self-defense, fitness, and advanced techniques.</p>
                   </div>
                 </div>
@@ -215,7 +215,7 @@ export default function Home() {
                   { icon: Users, title: 'Expert Instructors', desc: 'Learn from champions and certified black belts dedicated to your success.', color: 'red' },
                   { icon: Shield, title: 'Safe Environment', desc: 'Clean, fully matted facilities with a strict focus on safety and respect.', color: 'yellow' },
                   { icon: Heart, title: 'Build Confidence', desc: 'Watch your child transform as they overcome challenges and earn their ranks.', color: 'orange' },
-                  { icon: Trophy, title: 'Competition Ready', desc: 'Optional competition tracks for those looking to test their skills in tournaments.', color: 'red' }
+                  { icon: Trophy, title: 'Leadership Ready', desc: 'Focused on developing the next great leaders in our community.', color: 'red' }
                 ].map((feature, idx) => {
                   const Icon = feature.icon;
                   const colorClasses = 
@@ -305,9 +305,9 @@ export default function Home() {
                 <label className="text-sm font-bold uppercase tracking-wider text-gray-400">Preferred Program</label>
                 <select name="program" className="w-full bg-black border border-zinc-800 p-4 text-white focus:border-red-500 focus:ring-1 focus:ring-red-500 outline-none transition-colors appearance-none">
                   <option>Select a program...</option>
-                  <option>Little Ninjas (Ages 4-7)</option>
-                  <option>Junior Elite (Ages 8-12)</option>
-                  <option>Teens & Adults (13+)</option>
+                  <option>Lil Dragons (Ages 4-7)</option>
+                  <option>Junior Elite (Ages 8-14)</option>
+                  <option>Teens & Adults (14+)</option>
                   <option>Not Sure Yet</option>
                 </select>
               </div>
@@ -357,11 +357,11 @@ export default function Home() {
               <ul className="space-y-4 text-gray-400">
                 <li className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-red-500 shrink-0" />
-                  <span>123 Dojo Way, Suite 100<br/>Martial City, ST 12345</span>
+                  <span>2315 Sunset Blvd.<br/>Rocklin, CA 95765</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <Phone className="w-5 h-5 text-red-500 shrink-0" />
-                  <span>(555) 987-6543</span>
+                  <span>(916) 632-1995</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <Mail className="w-5 h-5 text-red-500 shrink-0" />
