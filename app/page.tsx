@@ -5,6 +5,20 @@ import { Shield, Users, Trophy, Heart, ChevronRight, MapPin, Phone, Mail, Facebo
 import { motion } from 'motion/react';
 
 export default function Home() {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const data = Object.fromEntries(new FormData(form));
+    await fetch('https://formspree.io/f/mbdznork', {
+      method: 'POST', headers: {'Accept': 'application/json'},
+      body: JSON.stringify(data)
+    });
+    await fetch('https://script.google.com/macros/s/AKfycbwvpuh0XOrwTsxS41Oal7e4ZMHgktSJBy5HoPmRdEZGEvjDeO4WA5rbf6-z2jomVVh8/exec', {
+      method: 'POST', body: JSON.stringify(data)
+    });
+    alert('Thank you! We will be in touch soon.');
+    form.reset();
+  }
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
       {/* Header */}
@@ -259,7 +273,7 @@ export default function Home() {
               <p className="text-gray-300 text-lg">Fill out the form below to claim your two free weeks of unlimited training. No commitment required.</p>
             </div>
 
-            <form action="https://formspree.io/f/mbdznork" method="POST" className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-sm font-bold uppercase tracking-wider text-gray-400">Student Name</label>
