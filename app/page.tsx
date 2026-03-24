@@ -112,8 +112,8 @@ export default function Home() {
                   <div className="text-sm text-gray-400 uppercase tracking-wider font-bold">Active Students</div>
                 </div>
                 <div className="border-l-2 border-yellow-500 pl-4">
-                  <div className="font-display text-4xl text-white">15+</div>
-                  <div className="text-sm text-gray-400 uppercase tracking-wider font-bold">Expert Coaches</div>
+                  <div className="font-display text-4xl text-white">30+</div>
+                  <div className="text-sm text-gray-400 uppercase tracking-wider font-bold">Years of Experience</div>
                 </div>
               </div>
             </div>
