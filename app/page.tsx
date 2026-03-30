@@ -1,10 +1,69 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Shield, Users, Trophy, Heart, ChevronRight, MapPin, Phone, Mail, Facebook, Instagram, Twitter } from 'lucide-react';
 import { motion } from 'motion/react';
 
+const reviews = [
+  { name: "Bailie Loebs", text: "Fusion Elite is absolutely fantastic! Both of my kids have been training there for the last year and we all love everything about it. The instructors are truly wonderful." },
+  { name: "Kate Clift", text: "We LOVE Fusion! It has a very loving family atmosphere — everyone is welcoming and friendly, from the owner and coaches to the front desk and other families." },
+  { name: "Jackie Walker", text: "We absolutely love Fusion Elite! My boys have been doing both karate and jujutsu here, and it has been such an incredible experience. They genuinely look forward to every class." },
+  { name: "Ann Mitchell", text: "My 6-year-old daughter loves Fusion Elite! She loves that karate is built right into the aftercare, and it's been awesome watching her get more confident." },
+  { name: "Kristin Saldo", text: "We love Fusion! Our daughter has been doing Karate with Fusion for almost 3 years now. She learns so much — skills, discipline and showing respect!" },
+  { name: "ZZELKi", text: "I cannot heap enough praise upon the instructors & environment at Fusion Elite. My son has been training here for six years. The martial arts program is top-notch." },
+  { name: "Steve Kineret", text: "My family have all trained with Fusion Elite and now my grandson is as well. It has been an invaluable experience and we all love coming here." },
+  { name: "Roxanne Barrington", text: "This is an incredible taekwondo studio that goes far beyond martial arts. The instructors emphasize respect, discipline, confidence, and perseverance. The studio feels like a supportive community!" },
+  { name: "Ryan Loebs", text: "My kids have been attending for close to two years and have absolutely loved it. My oldest loved it so much they requested to take additional classes!" },
+  { name: "Heidi Henkle", text: "My two grandsons are regular students at Fusion Elite and they are thriving. I sometimes go to watch and I'm always impressed with the training and attention they are receiving." },
+  { name: "B Arce", text: "This place is AMAZING!! My kiddo has been coming to Fusion for over 3 years and he loooooves it. Mr Joe and Andrew are incredible!!!" },
+  { name: "Oreste Russ Rocchi", text: "Joey is intentional, knowledgeable, and genuinely invested in the success of every athlete who walks through the door. Fusion Elite is truly operating at a high level." },
+  { name: "Andrew Barrington", text: "Our son's focus and discipline has increased tremendously both at home and at school. Our daughter has gained tremendous confidence in herself. Can't say enough good things!" },
+  { name: "Renee Passenheim", text: "We are so impressed with this martial arts after-school and summer camp program. The staff is caring, attentive, and always puts safety first." },
+  { name: "Erin Kambenja", text: "My kids love the program and all they are learning! It's clear the teachers love what they do. Mr. Joey makes everyone feel so welcome and is so great with all the families!" },
+  { name: "Brandon Clift", text: "Nice group for jujitsu. Great community feel and the training for my son is excellent." },
+  { name: "Stephanie Clark", text: "Since starting at the beginning of the school year, we have seen a significant change in our son's confidence, problem solving and communication. He loves going to Fusion." },
+  { name: "Shannon Beam", text: "Truly an amazing place for kids and adults alike. My son is thriving under the supportive coaching of the staff and the owner, Joey. Everyone who works there is warm." },
+  { name: "Ramkumar Hulikal", text: "I can't say enough great things about Fusion Elite! From the moment we walked in, the atmosphere has been nothing short of welcoming and professional." },
+  { name: "Nina Westphal", text: "Fusion is the BEST martial arts studio in Rocklin! The owner taught my husband when he was a child, and now my 3 children are students. We love Fusion Elite!" },
+  { name: "Jessica Adams", text: "My high-energy son has loved training karate here for several months. The instructors are patient and fun but provide good structure. The whole staff has been super welcoming." },
+  { name: "Janice Martinez", text: "I have taken all of my children to Fusion Elite within the last 15 years. They are amazing and have done so much for our family." },
+  { name: "Tricia Owen", text: "My 10 year old son has been coming to Fusion for karate for 5 years. It's such a welcoming place. We are always met with smiles and personal greetings." },
+  { name: "Greg James", text: "Our youngest daughter has been going to Fusion Elite for the past couple of years training in Taekwondo. It's been a great experience. Highly recommend!" },
+  { name: "Len Yanko", text: "My kids have been attending Fusion Elite for several years. My daughter did karate and loved it, and my son is doing Brazilian Jiu-Jitsu — he truly loves it." },
+  { name: "Lauren Batalias", text: "Fusion Elite offers high quality, affordable programming, a supportive community, and is run by wonderful people. Our family has benefited exponentially." },
+  { name: "Nicole Miller", text: "My son has been going to the after school program at Fusion Elite. He loves going there everyday and absolutely loves the Lil Dragons karate class. I am so happy we found Fusion Elite!" },
+  { name: "Christopher Boyle", text: "Joey and the team have been fantastic for my son. They've really helped him gain confidence in a new environment while maintaining a great level of fitness." },
+  { name: "Catherine Le", text: "My 11 yr old son has been training at Fusion Elite for years and loves it. He tested for his 1st degree black belt this year. It has been our pleasure!" },
+  { name: "Kirsten Little", text: "My son and daughter both take Brazilian jujitsu here. They love it! The instructors are very patient and personal. I have seen significant improvement in my kids over the last year." },
+  { name: "Ed Miller", text: "We love Fusion Elite. Our son loves going to the Fusion Fun Club and the Lil Dragons Karate Classes. I highly recommend Fusion Elite!" },
+  { name: "Evelyn Lee", text: "Fusion is run by awesome folks! All the programs are taught by knowledgeable coaches and teachers who take the time to really teach." },
+  { name: "Jon Jorajuria", text: "Fusion Elite has something for everybody. I enjoy the diversity of the programs and the ability to meet all my fitness needs in one spot." },
+  { name: "Kelly Andrade", text: "Joey and his TEAM are incredible. My 11 year old daughter loves all the classes and events at this place!!" },
+  { name: "Y L", text: "The instructors are great & fun. My kid is taking self-defense class there and loves it." },
+  { name: "Daphne Read", text: "Been doing their martial arts program for a couple years now. Amazing people, amazing curriculum — people will always greet you with a smile." },
+  { name: "Brandon Lee", text: "Fusion Elite is a great opportunity for adults and children to try new things like Jiu-Jitsu, Taekwondo, and more!" },
+  { name: "Julio Veliz", text: "Fun safe place for the entire family. There are fitness classes, afterschool classes, jiu jitsu classes and karate classes." },
+  { name: "Lakshmi Pillai", text: "We love Fusion Elite!! Rhea and Nikhil love coming, the teachers are amazing." },
+  { name: "Cecilia Gonzalez", text: "I have had an amazing experience at this place. The coaches are respectful and fun to talk to. Never had a better experience. 5 stars!" },
+  { name: "Bojana Pajic", text: "We enjoy going to Fusion. Great place for the kids. The staff is kind and patient." },
+];
+
 export default function Home() {
+  const [currentReview, setCurrentReview] = useState(0);
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setVisible(false);
+      setTimeout(() => {
+        setCurrentReview((prev) => (prev + 1) % reviews.length);
+        setVisible(true);
+      }, 500);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
@@ -14,13 +73,47 @@ export default function Home() {
       body: JSON.stringify(data)
     });
     await fetch('https://script.google.com/macros/s/AKfycbwvpuh0XOrwTsxS41Oal7e4ZMHgktSJBy5HoPmRdEZGEvjDeO4WA5rbf6-z2jomVVh8/exec', {
-      method: 'POST', body: JSON.stringify(data)
+      method: 'POST', body: JSON.stringify(data), mode: 'no-cors'
     });
     alert('Thank you! We will be in touch soon.');
     form.reset();
   }
+
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
+
+      {/* Floating Review Bubble */}
+      <div className="fixed top-24 right-4 z-50 max-w-xs hidden md:block">
+        <div
+          style={{ opacity: visible ? 1 : 0, transition: 'opacity 0.5s ease-in-out' }}
+          className="bg-zinc-900 border border-zinc-700 rounded-2xl p-4 shadow-2xl"
+        >
+          <div className="flex items-center gap-2 mb-2">
+            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-red-600 to-yellow-500 flex items-center justify-center text-xs font-bold text-black">
+              {reviews[currentReview].name.charAt(0)}
+            </div>
+            <div>
+              <p className="text-white text-xs font-bold">{reviews[currentReview].name}</p>
+              <div className="flex gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <span key={i} className="text-yellow-500 text-xs">★</span>
+                ))}
+              </div>
+            </div>
+            <div className="ml-auto">
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
+              </svg>
+            </div>
+          </div>
+          <p className="text-gray-300 text-xs leading-relaxed line-clamp-3">{reviews[currentReview].text}</p>
+          <div className="mt-2 flex items-center justify-between">
+            <span className="text-gray-500 text-xs">Google Review</span>
+            <span className="text-gray-500 text-xs">{currentReview + 1}/{reviews.length}</span>
+          </div>
+        </div>
+      </div>
+
       {/* Header */}
       <header className="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
@@ -34,7 +127,7 @@ export default function Home() {
                 unoptimized
               />
             </div>
-            <span className="font-display text-3xl tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-yellow-500 transform -skew-x-6">FUSION ELITE</span>
+            <span className="font-display text-3xl tracking-wider">FUSION</span>
           </div>
           <nav className="hidden md:flex gap-8 font-bold text-sm uppercase tracking-wider">
             <a href="#about" className="hover:text-red-500 transition-colors">About</a>
@@ -215,7 +308,7 @@ export default function Home() {
                   { icon: Users, title: 'Expert Instructors', desc: 'Learn from champions and certified black belts dedicated to your success.', color: 'red' },
                   { icon: Shield, title: 'Safe Environment', desc: 'Clean, fully matted facilities with a strict focus on safety and respect.', color: 'yellow' },
                   { icon: Heart, title: 'Build Confidence', desc: 'Watch your child transform as they overcome challenges and earn their ranks.', color: 'orange' },
-                  { icon: Trophy, title: 'Leadership Ready', desc: 'Focused on developing the next great leaders in our community.', color: 'red' }
+                  { icon: Trophy, title: 'Competition Ready', desc: 'Optional competition tracks for those looking to test their skills in tournaments.', color: 'red' }
                 ].map((feature, idx) => {
                   const Icon = feature.icon;
                   const colorClasses = 
@@ -277,7 +370,7 @@ export default function Home() {
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-sm font-bold uppercase tracking-wider text-gray-400">Student Name</label>
-                  <input type="text" className="w-full bg-black border border-zinc-800 p-4 text-white focus:border-red-500 focus:ring-1 focus:ring-red-500 outline-none transition-colors" placeholder="John Doe" />
+                  <input name="student_name" type="text" className="w-full bg-black border border-zinc-800 p-4 text-white focus:border-red-500 focus:ring-1 focus:ring-red-500 outline-none transition-colors" placeholder="John Doe" />
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-bold uppercase tracking-wider text-gray-400">Student Age</label>
@@ -336,7 +429,7 @@ export default function Home() {
                     unoptimized
                   />
                 </div>
-                <span className="font-display text-2xl tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-yellow-500 transform -skew-x-6">FUSION ELITE</span>
+                <span className="font-display text-2xl tracking-wider">FUSION ELITE</span>
               </div>
               <p className="text-gray-400 max-w-sm mb-6">Empowering the next generation through the discipline, respect, and physical fitness of martial arts.</p>
               <div className="flex gap-4">
