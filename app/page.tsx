@@ -75,8 +75,7 @@ export default function Home() {
     await fetch('https://script.google.com/macros/s/AKfycbwvpuh0XOrwTsxS41Oal7e4ZMHgktSJBy5HoPmRdEZGEvjDeO4WA5rbf6-z2jomVVh8/exec', {
       method: 'POST', body: JSON.stringify(data), mode: 'no-cors'
     });
-    alert('Thank you! We will be in touch soon.');
-    form.reset();
+    window.location.href = 'https://cp.mystudio.io/t/?=5XdERO/16571/61033//1774662175';
   }
 
   return (
